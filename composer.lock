@@ -4,8 +4,30 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b375ea9c02cc5ecc4a6ed8d7da411eeb",
+    "hash": "7262371d3aeb8c2d9789814cedc67d36",
     "packages": [
+        {
+            "name": "acme/calculator-model",
+            "version": "dev-master",
+            "target-dir": "Acme/CalculatorModelBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/remialvado/CalculatorModelBundle",
+                "reference": "8fb811f9c5fc6598a9178ea07eed1ffe7d2c0af4"
+            },
+            "require": {
+                "guzzle/guzzle": "3.*",
+                "jms/serializer-bundle": "0.12.*",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Acme\\CalculatorModelBundle": ""
+                }
+            },
+            "time": "2014-07-27 19:44:59"
+        },
         {
             "name": "doctrine/annotations",
             "version": "v1.2.0",
@@ -2525,9 +2547,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "acme/calculator-model": 20
+    },
     "platform": {
         "php": ">=5.3.3"
     },

@@ -70,4 +70,4 @@ swiftmailer:
 
 jms_di_extra:
     locations:
-        directories: ["%kernel.root_dir%/../src"]
+        directories: ["%kernel.root_dir%/../src", "%kernel.root_dir%/../vendor/acme"]
