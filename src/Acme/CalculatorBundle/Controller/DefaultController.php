@@ -2,31 +2,50 @@
 
 namespace Acme\CalculatorBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Acme\CalculatorBundle\Model\Operand;
+use Acme\CalculatorBundle\Model\Operator;
 use Symfony\Component\HttpFoundation\Request;
+use JMS\DiExtraBundle\Annotation as DI;
 
-class DefaultController extends Controller
+/**
+ * @DI\Service("acme.calculator.controller")
+ */
+class DefaultController extends AbstractController
 {
-    public function indexAction()
+    public function homepage()
     {
-        return $this->render('AcmeCalculatorBundle:Default:index.html.twig');
+        return $this->render('AcmeCalculatorBundle:Default:index.html.twig', [
+            "operators" => $this->operatorFactory->getSupportedOperators()
+        ]);
     }
 
-    public function computeAction(Request $request)
+    public function compute(Request $request)
     {
-        $operandA = $request->get("operand-a");
-        $operandB = $request->get("operand-b");
-        $operator = $request->get("operator");
-        $result = null;
-        if ($operator === "add") $result = $operandA + $operandB;
-        if ($operator === "substract") $result = $operandA - $operandB;
-        if ($operator === "multiply") $result = $operandA * $operandB;
-        if ($operator === "divide") $result = $operandA / $operandB;
+        $operandA = new Operand($request->get("operand-a"));
+        $operandB = new Operand($request->get("operand-b"));
+        $operator = $this->operatorFactory->getOperator($request->get("operator"));
         return $this->render('AcmeCalculatorBundle:Default:result.html.twig', [
             "operandA" => $operandA,
             "operandB" => $operandB,
             "operator" => $operator,
-            "result"   => $result,
+            "result"   => $this->calculator->compute($operandA, $operandB, $operator),
         ]);
     }
+
+    /**
+     * @var \Acme\CalculatorBundle\Service\Calculator
+     * @DI\Inject("acme.calculator.calculator.simple")
+     */
+    public $calculator;
+
+    /**
+     * @var \Acme\CalculatorBundle\Service\OperatorFactory
+     * @DI\Inject("acme.calculator.operator.factory")
+     */
+    public $operatorFactory;
+
+    /**
+     * @DI\Inject("templating")
+     */
+    public $templating;
 }

@@ -10,10 +10,9 @@
         <input name="operand-a" id="operand-a" />
         <label for="operator">Operator</label>
         <select name="operator" id="operator">
-            <option value="add">+</option>
-            <option value="substract">-</option>
-            <option value="multiply">*</option>
-            <option value="divide">/</option>
+            {% for operator in operators %}
+                <option value="{{ operator.id | escape('html_attr') }}">{{ operator.label }}</option>
+            {% endfor %}
         </select>
         <label for="operand-b">Operand B</label>
         <input name="operand-b" id="operand-b" />
