@@ -1,8 +1,8 @@
 <?php
 
-namespace Acme\CalculatorAPIBundle\Model\Operator;
+namespace Acme\CalculatorModelBundle\Model\Operator;
 
-use Acme\CalculatorAPIBundle\Model\Result;
+use Acme\CalculatorModelBundle\Model\Result;
 use JMS\DiExtraBundle\Annotation as DI;
 
 /**
@@ -17,9 +17,9 @@ class Divide extends Operator
     }
 
     /**
-     * @param \Acme\CalculatorAPIBundle\Model\Operand $operandA
-     * @param \Acme\CalculatorAPIBundle\Model\Operand $operandB
-     * @return \Acme\CalculatorAPIBundle\Model\Result
+     * @param \Acme\CalculatorModelBundle\Model\Operand $operandA
+     * @param \Acme\CalculatorModelBundle\Model\Operand $operandB
+     * @return \Acme\CalculatorModelBundle\Model\Result
      */
     public function compute($operandA, $operandB)
     {

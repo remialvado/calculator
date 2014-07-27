@@ -1,9 +1,9 @@
 <?php
 
-namespace Acme\CalculatorAPIBundle\Tests\Model;
+namespace Acme\CalculatorModelBundle\Tests\Model;
 
-use Acme\CalculatorAPIBundle\Model\Operand;
-use Acme\CalculatorAPIBundle\Tests\BaseTestCase;
+use Acme\CalculatorModelBundle\Model\Operand;
+use Acme\CalculatorModelBundle\Tests\BaseTestCase;
 
 class OperandTest extends BaseTestCase
 {
@@ -41,7 +41,7 @@ class OperandTest extends BaseTestCase
     public function deserializeJson() {
         $actual = '{"value":3}';
         $expected = new Operand(3);
-        $this->assertThat($this->getSerializer()->deserialize($actual, "Acme\CalculatorAPIBundle\Model\Operand", "json"), $this->equalTo($expected));
+        $this->assertThat($this->getSerializer()->deserialize($actual, "Acme\CalculatorModelBundle\Model\Operand", "json"), $this->equalTo($expected));
     }
 
     /**
@@ -57,7 +57,7 @@ class OperandTest extends BaseTestCase
      */
     public function deserializeXml() {
         $expected = new Operand(3);
-        $this->assertThat($this->getSerializer()->deserialize($this->xmlSerializationFormat, "Acme\CalculatorAPIBundle\Model\Operand", "xml"), $this->equalTo($expected));
+        $this->assertThat($this->getSerializer()->deserialize($this->xmlSerializationFormat, "Acme\CalculatorModelBundle\Model\Operand", "xml"), $this->equalTo($expected));
     }
 
     /**

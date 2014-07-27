@@ -1,8 +1,8 @@
 <?php
 
-namespace Acme\CalculatorAPIBundle\Service;
+namespace Acme\CalculatorModelBundle\Service;
 
-use Acme\CalculatorAPIBundle\Model\Operator\Operator;
+use Acme\CalculatorModelBundle\Model\Operator\Operator;
 
 use JMS\DiExtraBundle\Annotation as DI;
 

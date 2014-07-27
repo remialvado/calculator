@@ -1,11 +1,11 @@
 <?php
 
-namespace Acme\CalculatorAPIBundle\Tests\Model\Operator;
+namespace Acme\CalculatorModelBundle\Tests\Model\Operator;
 
-use Acme\CalculatorAPIBundle\Model\Operand;
-use Acme\CalculatorAPIBundle\Model\Result;
-use Acme\CalculatorAPIBundle\Tests\BaseTestCase;
-use Acme\CalculatorAPIBundle\Model\Operator\Multiply;
+use Acme\CalculatorModelBundle\Model\Operand;
+use Acme\CalculatorModelBundle\Model\Result;
+use Acme\CalculatorModelBundle\Tests\BaseTestCase;
+use Acme\CalculatorModelBundle\Model\Operator\Multiply;
 
 class MultiplyTest extends BaseTestCase
 {
@@ -43,7 +43,7 @@ class MultiplyTest extends BaseTestCase
     public function deserializeJson() {
         $actual = '{"_type":"multiply","id":"multiply","label":"*"}';
         $expected = new Multiply();
-        $this->assertThat($this->getSerializer()->deserialize($actual, "Acme\CalculatorAPIBundle\Model\Operator\Operator", "json"), $this->equalTo($expected));
+        $this->assertThat($this->getSerializer()->deserialize($actual, "Acme\CalculatorModelBundle\Model\Operator\Operator", "json"), $this->equalTo($expected));
     }
 
     /**
@@ -59,7 +59,7 @@ class MultiplyTest extends BaseTestCase
      */
     public function deserializeXml() {
         $expected = new Multiply();
-        $this->assertThat($this->getSerializer()->deserialize($this->xmlSerializationFormat, "Acme\CalculatorAPIBundle\Model\Operator\Operator", "xml"), $this->equalTo($expected));
+        $this->assertThat($this->getSerializer()->deserialize($this->xmlSerializationFormat, "Acme\CalculatorModelBundle\Model\Operator\Operator", "xml"), $this->equalTo($expected));
     }
 
     /**

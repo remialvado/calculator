@@ -1,32 +1,32 @@
 <?php
 
-namespace Acme\CalculatorAPIBundle\Model;
+namespace Acme\CalculatorModelBundle\Model;
 
 use JMS\Serializer\Annotation as Serializer;
 
 class Operation
 {
     /**
-     * @var \Acme\CalculatorAPIBundle\Model\Operand
-     * @Serializer\Type("Acme\CalculatorAPIBundle\Model\Operand")
+     * @var \Acme\CalculatorModelBundle\Model\Operand
+     * @Serializer\Type("Acme\CalculatorModelBundle\Model\Operand")
      */
     protected $operandA;
 
     /**
-     * @var \Acme\CalculatorAPIBundle\Model\Operand
-     * @Serializer\Type("Acme\CalculatorAPIBundle\Model\Operand")
+     * @var \Acme\CalculatorModelBundle\Model\Operand
+     * @Serializer\Type("Acme\CalculatorModelBundle\Model\Operand")
      */
     protected $operandB;
 
     /**
-     * @var \Acme\CalculatorAPIBundle\Model\Operator\Operator
-     * @Serializer\Type("Acme\CalculatorAPIBundle\Model\Operator\Operator")
+     * @var \Acme\CalculatorModelBundle\Model\Operator\Operator
+     * @Serializer\Type("Acme\CalculatorModelBundle\Model\Operator\Operator")
      */
     protected $operator;
 
     /**
-     * @var \Acme\CalculatorAPIBundle\Model\Result
-     * @Serializer\Type("Acme\CalculatorAPIBundle\Model\Result")
+     * @var \Acme\CalculatorModelBundle\Model\Result
+     * @Serializer\Type("Acme\CalculatorModelBundle\Model\Result")
      */
     protected $result;
 
@@ -39,7 +39,7 @@ class Operation
     }
 
     /**
-     * @param \Acme\CalculatorAPIBundle\Model\Operand $operandA
+     * @param \Acme\CalculatorModelBundle\Model\Operand $operandA
      */
     public function setOperandA($operandA)
     {
@@ -47,7 +47,7 @@ class Operation
     }
 
     /**
-     * @return \Acme\CalculatorAPIBundle\Model\Operand
+     * @return \Acme\CalculatorModelBundle\Model\Operand
      */
     public function getOperandA()
     {
@@ -55,7 +55,7 @@ class Operation
     }
 
     /**
-     * @param \Acme\CalculatorAPIBundle\Model\Operand $operandB
+     * @param \Acme\CalculatorModelBundle\Model\Operand $operandB
      */
     public function setOperandB($operandB)
     {
@@ -63,7 +63,7 @@ class Operation
     }
 
     /**
-     * @return \Acme\CalculatorAPIBundle\Model\Operand
+     * @return \Acme\CalculatorModelBundle\Model\Operand
      */
     public function getOperandB()
     {
@@ -71,7 +71,7 @@ class Operation
     }
 
     /**
-     * @param \Acme\CalculatorAPIBundle\Model\Operator\Operator $operator
+     * @param \Acme\CalculatorModelBundle\Model\Operator\Operator $operator
      */
     public function setOperator($operator)
     {
@@ -79,7 +79,7 @@ class Operation
     }
 
     /**
-     * @return \Acme\CalculatorAPIBundle\Model\Operator\Operator
+     * @return \Acme\CalculatorModelBundle\Model\Operator\Operator
      */
     public function getOperator()
     {
@@ -87,7 +87,7 @@ class Operation
     }
 
     /**
-     * @param \Acme\CalculatorAPIBundle\Model\Result $result
+     * @param \Acme\CalculatorModelBundle\Model\Result $result
      */
     public function setResult($result)
     {
@@ -95,7 +95,7 @@ class Operation
     }
 
     /**
-     * @return \Acme\CalculatorAPIBundle\Model\Result
+     * @return \Acme\CalculatorModelBundle\Model\Result
      */
     public function getResult()
     {

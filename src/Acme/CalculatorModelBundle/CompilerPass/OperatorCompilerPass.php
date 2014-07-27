@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\CalculatorAPIBundle\CompilerPass;
+namespace Acme\CalculatorModelBundle\CompilerPass;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

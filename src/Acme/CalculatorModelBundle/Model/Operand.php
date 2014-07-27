@@ -1,14 +1,14 @@
 <?php
 
-namespace Acme\CalculatorAPIBundle\Model;
+namespace Acme\CalculatorModelBundle\Model;
 
 use JMS\Serializer\Annotation as Serializer;
 
-class Result
+class Operand
 {
     /**
-     * @var mixed
-     * @Serializer\Type("string")
+     * @var double
+     * @Serializer\Type("double")
      */
     protected $value;
 
@@ -18,7 +18,7 @@ class Result
     }
 
     /**
-     * @param mixed $value
+     * @param double $value
      */
     public function setValue($value)
     {
@@ -26,7 +26,7 @@ class Result
     }
 
     /**
-     * @return mixed
+     * @return double
      */
     public function getValue()
     {

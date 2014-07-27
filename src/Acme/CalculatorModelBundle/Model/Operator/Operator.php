@@ -1,15 +1,15 @@
 <?php
 
-namespace Acme\CalculatorAPIBundle\Model\Operator;
+namespace Acme\CalculatorModelBundle\Model\Operator;
 
 use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @Serializer\Discriminator(field = "_type", map = {
- *      "add": "Acme\CalculatorAPIBundle\Model\Operator\Add",
- *      "substract": "Acme\CalculatorAPIBundle\Model\Operator\Substract",
- *      "multiply": "Acme\CalculatorAPIBundle\Model\Operator\Multiply",
- *      "divide": "Acme\CalculatorAPIBundle\Model\Operator\Divide"
+ *      "add": "Acme\CalculatorModelBundle\Model\Operator\Add",
+ *      "substract": "Acme\CalculatorModelBundle\Model\Operator\Substract",
+ *      "multiply": "Acme\CalculatorModelBundle\Model\Operator\Multiply",
+ *      "divide": "Acme\CalculatorModelBundle\Model\Operator\Divide"
  * })
  */
 abstract class Operator
@@ -33,9 +33,9 @@ abstract class Operator
     }
 
     /**
-     * @param \Acme\CalculatorAPIBundle\Model\Operand $operandA
-     * @param \Acme\CalculatorAPIBundle\Model\Operand $operandB
-     * @return \Acme\CalculatorAPIBundle\Model\Result mixed
+     * @param \Acme\CalculatorModelBundle\Model\Operand $operandA
+     * @param \Acme\CalculatorModelBundle\Model\Operand $operandB
+     * @return \Acme\CalculatorModelBundle\Model\Result mixed
      */
     public abstract function compute($operandA, $operandB);
 

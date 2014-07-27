@@ -1,10 +1,10 @@
 <?php
 
-namespace Acme\CalculatorAPIBundle\Tests\Model\Operator;
+namespace Acme\CalculatorModelBundle\Tests\Model\Operator;
 
-use Acme\CalculatorAPIBundle\Model\Operator\Operator;
-use Acme\CalculatorAPIBundle\Model\Result;
-use Acme\CalculatorAPIBundle\Tests\BaseTestCase;
+use Acme\CalculatorModelBundle\Model\Operator\Operator;
+use Acme\CalculatorModelBundle\Model\Result;
+use Acme\CalculatorModelBundle\Tests\BaseTestCase;
 
 class OperatorTest extends BaseTestCase
 {
@@ -42,9 +42,9 @@ class OperatorTest extends BaseTestCase
 class BaseOperator extends Operator
 {
     /**
-     * @param \Acme\CalculatorAPIBundle\Model\Operand $operandA
-     * @param \Acme\CalculatorAPIBundle\Model\Operand $operandB
-     * @return \Acme\CalculatorAPIBundle\Model\Result mixed
+     * @param \Acme\CalculatorModelBundle\Model\Operand $operandA
+     * @param \Acme\CalculatorModelBundle\Model\Operand $operandB
+     * @return \Acme\CalculatorModelBundle\Model\Result mixed
      */
     public function compute($operandA, $operandB)
     {

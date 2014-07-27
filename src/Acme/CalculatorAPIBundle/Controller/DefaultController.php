@@ -2,9 +2,9 @@
 
 namespace Acme\CalculatorAPIBundle\Controller;
 
-use Acme\CalculatorAPIBundle\Model\Operand;
-use Acme\CalculatorAPIBundle\Model\Operation;
-use Acme\CalculatorAPIBundle\Model\Operator;
+use Acme\CalculatorModelBundle\Model\Operand;
+use Acme\CalculatorModelBundle\Model\Operation;
+use Acme\CalculatorModelBundle\Model\Operator;
 use Symfony\Component\HttpFoundation\Request;
 use JMS\DiExtraBundle\Annotation as DI;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +32,7 @@ class DefaultController extends AbstractController
     public $calculator;
 
     /**
-     * @var \Acme\CalculatorAPIBundle\Service\OperatorFactory
+     * @var \Acme\CalculatorModelBundle\Service\OperatorFactory
      * @DI\Inject("acme.calculator.operator.factory")
      */
     public $operatorFactory;

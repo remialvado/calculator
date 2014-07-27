@@ -1,10 +1,10 @@
 <?php
 
-namespace Acme\CalculatorAPIBundle\Tests\Model;
+namespace Acme\CalculatorModelBundle\Tests\Model;
 
-use Acme\CalculatorAPIBundle\Model\Operator\Add;
-use Acme\CalculatorAPIBundle\Service\OperatorFactory;
-use Acme\CalculatorAPIBundle\Tests\BaseTestCase;
+use Acme\CalculatorModelBundle\Model\Operator\Add;
+use Acme\CalculatorModelBundle\Service\OperatorFactory;
+use Acme\CalculatorModelBundle\Tests\BaseTestCase;
 
 class OperatorFactoryTest extends BaseTestCase
 {
@@ -51,7 +51,7 @@ class OperatorFactoryTest extends BaseTestCase
         $operatorFactory = $this->getService("acme.calculator.operator.factory");
         $supportedOperators = $operatorFactory->getSupportedOperators();
         foreach($supportedOperators as $supportedOperator) {
-            $this->assertThat($supportedOperator, $this->isInstanceOf("Acme\CalculatorAPIBundle\Model\Operator\Operator"));
+            $this->assertThat($supportedOperator, $this->isInstanceOf("Acme\CalculatorModelBundle\Model\Operator\Operator"));
         }
     }
 } 

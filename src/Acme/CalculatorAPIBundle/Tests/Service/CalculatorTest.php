@@ -2,13 +2,13 @@
 
 namespace Acme\CalculatorAPIBundle\Tests\Model;
 
-use Acme\CalculatorAPIBundle\Model\Operand;
-use Acme\CalculatorAPIBundle\Model\Operator\Add;
-use Acme\CalculatorAPIBundle\Model\Operator\Divide;
-use Acme\CalculatorAPIBundle\Model\Operator\Multiply;
-use Acme\CalculatorAPIBundle\Model\Operator\Operator;
-use Acme\CalculatorAPIBundle\Model\Operator\Substract;
-use Acme\CalculatorAPIBundle\Model\Result;
+use Acme\CalculatorModelBundle\Model\Operand;
+use Acme\CalculatorModelBundle\Model\Operator\Add;
+use Acme\CalculatorModelBundle\Model\Operator\Divide;
+use Acme\CalculatorModelBundle\Model\Operator\Multiply;
+use Acme\CalculatorModelBundle\Model\Operator\Operator;
+use Acme\CalculatorModelBundle\Model\Operator\Substract;
+use Acme\CalculatorModelBundle\Model\Result;
 use Acme\CalculatorAPIBundle\Service\Calculator;
 use Acme\CalculatorAPIBundle\Tests\BaseTestCase;
 
@@ -68,9 +68,9 @@ class CalculatorTest extends BaseTestCase
 class BaseOperator extends Operator
 {
     /**
-     * @param \Acme\CalculatorAPIBundle\Model\Operand $operandA
-     * @param \Acme\CalculatorAPIBundle\Model\Operand $operandB
-     * @return \Acme\CalculatorAPIBundle\Model\Result mixed
+     * @param \Acme\CalculatorModelBundle\Model\Operand $operandA
+     * @param \Acme\CalculatorModelBundle\Model\Operand $operandB
+     * @return \Acme\CalculatorModelBundle\Model\Result mixed
      */
     public function compute($operandA, $operandB)
     {

@@ -10,10 +10,10 @@ use JMS\DiExtraBundle\Annotation as DI;
 class Calculator
 {
     /**
-     * @param \Acme\CalculatorAPIBundle\Model\Operand $operandA
-     * @param \Acme\CalculatorAPIBundle\Model\Operand $operandB
-     * @param \Acme\CalculatorAPIBundle\Model\Operator\Operator $operator
-     * @return \Acme\CalculatorAPIBundle\Model\Result
+     * @param \Acme\CalculatorModelBundle\Model\Operand $operandA
+     * @param \Acme\CalculatorModelBundle\Model\Operand $operandB
+     * @param \Acme\CalculatorModelBundle\Model\Operator\Operator $operator
+     * @return \Acme\CalculatorModelBundle\Model\Result
      */
     public function compute($operandA, $operandB, $operator)
     {
