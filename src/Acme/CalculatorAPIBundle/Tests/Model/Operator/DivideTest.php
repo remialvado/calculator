@@ -45,4 +45,57 @@ class DivideTest extends BaseTestCase
         $divide = new Divide();
         $this->assertThat($divide->compute(new Operand(-10), new Operand(0)), $this->equalTo(new Result("-infinity")));
     }
+
+    /**
+     * @test
+     */
+    public function serializeJson() {
+        $divide = new Divide();
+        $expected = '{"_type":"divide","id":"divide","label":"\/"}';
+        $this->assertThat($this->getSerializer()->serialize($divide, "json"), $this->equalTo($expected));
+    }
+
+    /**
+     * @test
+     */
+    public function deserializeJson() {
+        $actual = '{"_type":"divide","id":"divide","label":"\/"}';
+        $expected = new Divide();
+        $this->assertThat($this->getSerializer()->deserialize($actual, "Acme\CalculatorAPIBundle\Model\Operator\Operator", "json"), $this->equalTo($expected));
+    }
+
+    /**
+     * @test
+     */
+    public function serializeXml() {
+        $divide = new Divide();
+        $this->assertThat($this->getSerializer()->serialize($divide, "xml"), $this->equalTo($this->xmlSerializationFormat));
+    }
+
+    /**
+     * @test
+     */
+    public function deserializeXml() {
+        $expected = new Divide();
+        $this->assertThat($this->getSerializer()->deserialize($this->xmlSerializationFormat, "Acme\CalculatorAPIBundle\Model\Operator\Operator", "xml"), $this->equalTo($expected));
+    }
+
+    /**
+     * @return \JMS\Serializer\SerializerInterface
+     */
+    protected function getSerializer()
+    {
+        return $this->getService("serializer");
+    }
+
+    protected $xmlSerializationFormat = <<<'EOD'
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+  <_type><![CDATA[divide]]></_type>
+  <id><![CDATA[divide]]></id>
+  <label><![CDATA[/]]></label>
+  <_type><![CDATA[divide]]></_type>
+</result>
+
+EOD;
 } 

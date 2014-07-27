@@ -2,11 +2,13 @@
 
 namespace Acme\CalculatorAPIBundle\Model;
 
+use JMS\Serializer\Annotation as Serializer;
 
 class Result
 {
     /**
      * @var mixed
+     * @Serializer\Type("string")
      */
     protected $value;
 
@@ -31,9 +33,6 @@ class Result
         return $this->value;
     }
 
-    /**
-     * @inherit
-     */
     public function __toString()
     {
         return (string) $this->value;

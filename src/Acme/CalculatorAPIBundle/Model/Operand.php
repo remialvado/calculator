@@ -2,10 +2,13 @@
 
 namespace Acme\CalculatorAPIBundle\Model;
 
+use JMS\Serializer\Annotation as Serializer;
+
 class Operand
 {
     /**
-     * @var float
+     * @var double
+     * @Serializer\Type("double")
      */
     protected $value;
 
@@ -15,7 +18,7 @@ class Operand
     }
 
     /**
-     * @param float $value
+     * @param double $value
      */
     public function setValue($value)
     {
@@ -23,16 +26,13 @@ class Operand
     }
 
     /**
-     * @return float
+     * @return double
      */
     public function getValue()
     {
         return $this->value;
     }
 
-    /**
-     * @inherit
-     */
     public function __toString()
     {
         return (string) $this->value;

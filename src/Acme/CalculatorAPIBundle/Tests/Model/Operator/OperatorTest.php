@@ -4,8 +4,9 @@ namespace Acme\CalculatorAPIBundle\Tests\Model\Operator;
 
 use Acme\CalculatorAPIBundle\Model\Operator\Operator;
 use Acme\CalculatorAPIBundle\Model\Result;
+use Acme\CalculatorAPIBundle\Tests\BaseTestCase;
 
-class OperatorTest extends \PHPUnit_Framework_TestCase
+class OperatorTest extends BaseTestCase
 {
     /**
      * @test

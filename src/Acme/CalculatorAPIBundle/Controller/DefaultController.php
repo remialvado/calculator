@@ -3,6 +3,7 @@
 namespace Acme\CalculatorAPIBundle\Controller;
 
 use Acme\CalculatorAPIBundle\Model\Operand;
+use Acme\CalculatorAPIBundle\Model\Operation;
 use Acme\CalculatorAPIBundle\Model\Operator;
 use Symfony\Component\HttpFoundation\Request;
 use JMS\DiExtraBundle\Annotation as DI;
@@ -13,40 +14,15 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class DefaultController extends AbstractController
 {
-    public function computeJson(Request $request)
+    public function compute(Request $request, $_format = "json")
     {
         $operandA = new Operand($request->get("operandA"));
         $operandB = new Operand($request->get("operandB"));
         $operator = $this->operatorFactory->getOperator($request->get("operator"));
 
         $result = $this->calculator->compute($operandA, $operandB, $operator);
-        return new Response(json_encode([
-            "operandA" => $operandA->getValue(),
-            "operandB" => $operandB->getValue(),
-            "operator" => [
-                "id"    => $operator->getId(),
-                "label" => $operator->getLabel(),
-            ],
-            "result" => $result->getValue()
-        ]));
-    }
-
-    public function computeXml(Request $request)
-    {
-        $operandA = new Operand($request->get("operandA"));
-        $operandB = new Operand($request->get("operandB"));
-        $operator = $this->operatorFactory->getOperator($request->get("operator"));
-
-        $result = $this->calculator->compute($operandA, $operandB, $operator);
-        $xml = new \SimpleXMLElement("<?xml version=\"1.0\" encoding=\"utf-8\" ?><operation></operation>");
-        $xml->addChild("operandA", $operandA->getValue());
-        $xml->addChild("operandB", $operandB->getValue());
-        $operatorXml = $xml->addChild("operator");
-        $operatorXml->addAttribute("id", $operator->getId());
-        $operatorXml->addAttribute("label", $operator->getLabel());
-        $xml->addChild("result", $result->getValue());
-
-        return new Response($xml->asXML());
+        $operation = new Operation($operandA, $operandB, $operator, $result);
+        return new Response($this->serializer->serialize($operation, $_format));
     }
 
     /**
@@ -60,4 +36,10 @@ class DefaultController extends AbstractController
      * @DI\Inject("acme.calculator.operator.factory")
      */
     public $operatorFactory;
+
+    /**
+     * @var \JMS\Serializer\SerializerInterface
+     * @DI\Inject("serializer")
+     */
+    public $serializer;
 }

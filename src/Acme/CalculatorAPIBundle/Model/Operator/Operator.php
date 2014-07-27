@@ -2,15 +2,27 @@
 
 namespace Acme\CalculatorAPIBundle\Model\Operator;
 
+use JMS\Serializer\Annotation as Serializer;
+
+/**
+ * @Serializer\Discriminator(field = "_type", map = {
+ *      "add": "Acme\CalculatorAPIBundle\Model\Operator\Add",
+ *      "substract": "Acme\CalculatorAPIBundle\Model\Operator\Substract",
+ *      "multiply": "Acme\CalculatorAPIBundle\Model\Operator\Multiply",
+ *      "divide": "Acme\CalculatorAPIBundle\Model\Operator\Divide"
+ * })
+ */
 abstract class Operator
 {
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     protected $id;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     protected $label;
 
@@ -57,5 +69,14 @@ abstract class Operator
     public function getLabel()
     {
         return $this->label;
+    }
+
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("_type")
+     */
+    public function getType()
+    {
+        return $this->id;
     }
 } 
