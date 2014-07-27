@@ -23,11 +23,11 @@ class Divide extends Operator
      */
     public function compute($operandA, $operandB)
     {
-        if ($operandB->getValue() === 0 && $operandA->getValue() > 0) {
-            return "infinity";
+        if ($operandB->getValue() == 0 && $operandA->getValue() > 0) {
+            return new Result("infinity");
         }
-        else if ($operandB->getValue() === 0) {
-            return "-infinity";
+        else if ($operandB->getValue() == 0) {
+            return new Result("-infinity");
         }
         return new Result($operandA->getValue() / $operandB->getValue());
     }

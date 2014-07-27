@@ -46,6 +46,6 @@ class OperatorFactory
      */
     public function addOperator($operator)
     {
-        $this->operators[] = $operator;
+        $this->operators[$operator->getId()] = $operator;
     }
 } 
