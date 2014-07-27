@@ -16,7 +16,8 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new Acme\CalculatorBundle\AcmeCalculatorBundle(),
+            new Acme\CalculatorAPIBundle\AcmeCalculatorAPIBundle(),
+            new Acme\CalculatorUIBundle\AcmeCalculatorUIBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\AopBundle\JMSAopBundle(),
         );

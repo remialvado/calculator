@@ -1,0 +1,7 @@
+acme_calculator_ui_homepage:
+    path:     /
+    defaults: { _controller: acme.calculator.ui.controller:homepage }
+
+acme_calculator_ui_compute:
+    path:     /compute
+    defaults: { _controller: acme.calculator.ui.controller:compute }

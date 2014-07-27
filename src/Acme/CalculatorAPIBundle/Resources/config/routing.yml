@@ -1,0 +1,11 @@
+acme_calculator_api.compute.json:
+    path:     /{operandA}/{operandB}/{operator}.json
+    defaults:
+      _controller: acme.calculator.api.controller:computeJson
+      _format: json
+
+acme_calculator_api.compute.xml:
+    path:     /{operandA}/{operandB}/{operator}.xml
+    defaults:
+      _controller: acme.calculator.api.controller:computeXml
+      _format: xml
