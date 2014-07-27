@@ -2,7 +2,7 @@
 
 namespace Acme\CalculatorBundle\Tests\Model;
 
-use Acme\CalculatorBundle\Model\Operator;
+use Acme\CalculatorBundle\Model\Operator\Add;
 use Acme\CalculatorBundle\Service\OperatorFactory;
 use Acme\CalculatorBundle\Tests\BaseTestCase;
 
@@ -13,7 +13,7 @@ class OperatorFactoryTest extends BaseTestCase
      */
     public function getExistingOperator()
     {
-        $addOperator = new Operator("add", "+");
+        $addOperator = new Add();
         $operatorFactory = new OperatorFactory(["add" => $addOperator]);
         $this->assertThat($operatorFactory->getOperator("add"), $this->equalTo($addOperator));
     }
@@ -23,7 +23,7 @@ class OperatorFactoryTest extends BaseTestCase
      */
     public function getNonExistingOperator()
     {
-        $addOperator = new Operator("add", "+");
+        $addOperator = new Add();
         $operatorFactory = new OperatorFactory(["add" => $addOperator]);
         try {
             $operatorFactory->getOperator("substract");
@@ -38,7 +38,7 @@ class OperatorFactoryTest extends BaseTestCase
      */
     public function getNonExistingOperatorWithAnnotation()
     {
-        $addOperator = new Operator("add", "+");
+        $addOperator = new Add();
         $operatorFactory = new OperatorFactory(["add" => $addOperator]);
         $operatorFactory->getOperator("substract");
     }
@@ -51,7 +51,7 @@ class OperatorFactoryTest extends BaseTestCase
         $operatorFactory = $this->getService("acme.calculator.operator.factory");
         $supportedOperators = $operatorFactory->getSupportedOperators();
         foreach($supportedOperators as $supportedOperator) {
-            $this->assertThat($supportedOperator, $this->isInstanceOf("Acme\CalculatorBundle\Model\Operator"));
+            $this->assertThat($supportedOperator, $this->isInstanceOf("Acme\CalculatorBundle\Model\Operator\Operator"));
         }
     }
 } 

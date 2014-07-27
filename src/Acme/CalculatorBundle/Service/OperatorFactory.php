@@ -2,7 +2,7 @@
 
 namespace Acme\CalculatorBundle\Service;
 
-use Acme\CalculatorBundle\Model\Operator;
+use Acme\CalculatorBundle\Model\Operator\Operator;
 
 use JMS\DiExtraBundle\Annotation as DI;
 
@@ -12,20 +12,12 @@ use JMS\DiExtraBundle\Annotation as DI;
 class OperatorFactory
 {
     /**
-     * @var \Acme\CalculatorBundle\Model\Operator[]
+     * @var Operator[]
      */
     protected $operators;
 
-    function __construct($operators = null)
+    function __construct($operators = [])
     {
-        if (!isset($operators)) {
-            $operators = [
-                "add"       => new Operator("add", "+"),
-                "substract" => new Operator("substract", "-"),
-                "multiply"  => new Operator("multiply", "*"),
-                "divide"    => new Operator("divide", "/"),
-            ];
-        }
         $this->operators = $operators;
     }
 
@@ -42,10 +34,18 @@ class OperatorFactory
     }
 
     /**
-     * @return \Acme\CalculatorBundle\Model\Operator[]
+     * @return Operator[]
      */
     public function getSupportedOperators()
     {
         return array_values($this->operators);
+    }
+
+    /**
+     * @param Operator $operator
+     */
+    public function addOperator($operator)
+    {
+        $this->operators[] = $operator;
     }
 } 

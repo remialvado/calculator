@@ -1,8 +1,8 @@
 <?php
 
-namespace Acme\CalculatorBundle\Model;
+namespace Acme\CalculatorBundle\Model\Operator;
 
-class Operator
+abstract class Operator
 {
     /**
      * @var string
@@ -19,6 +19,13 @@ class Operator
         $this->id = $id;
         $this->label = $label;
     }
+
+    /**
+     * @param \Acme\CalculatorBundle\Model\Operand $operandA
+     * @param \Acme\CalculatorBundle\Model\Operand $operandB
+     * @return \Acme\CalculatorBundle\Model\Result mixed
+     */
+    public abstract function compute($operandA, $operandB);
 
     /**
      * @param string $id
