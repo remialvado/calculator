@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator V1</title>
+</head>
+<body>
+    <h1>Result</h1>
+    <span>
+        {{ operandA }}
+        {% if operator == 'add' %}+{% endif %}
+        {% if operator == 'substract' %}-{% endif %}
+        {% if operator == 'multiply' %}*{% endif %}
+        {% if operator == 'divide' %}/{% endif %}
+        {{ operandB }}
+        =
+        {{ result }}
+    </span>
+</body>
+</html>
