@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% set var_meta_title %}
+            {% block title %}Calculator{% endblock %}
+        {% endset %}
+        <title>{{var_meta_title|default('')|trim|raw}}</title>
+
+        {% block meta_robots %}
+            <meta name="robots" content="noindex, nofollow" />
+        {% endblock %}
+
+        {% block css %}
+            {% stylesheets
+                '@AcmeCalculatorUIBundle/Resources/public/css/third-parties/*'
+                '@AcmeCalculatorUIBundle/Resources/public/css/common/*'
+                filter='cssembed,?yui_css' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+
+        {% set jsSourcesHead %}
+            {% javascripts '@AcmeCalculatorUIBundle/Resources/public/js/head/*' filter='?yui_js' %}
+                {{ asset_url }}
+            {% endjavascripts %}
+        {% endset %}
+        <script>
+            (function() {
+                var cs = document.createElement('script'); cs.type = 'text/javascript'; cs.async = true;
+                cs.src = '{{jsSourcesHead|trim}}';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(cs, s);
+            })();
+        </script>
+    </head>
+    <body>
+        {% block header %}
+            {% include 'AcmeCalculatorUIBundle:Common:header.html.twig' %}
+        {% endblock %}
+
+        {% block h1 %}
+            <h1>Calculator V3</h1>
+        {% endblock %}
+
+        {% block main %}{% endblock %}
+
+        {% block footer %}
+            {% include 'AcmeCalculatorUIBundle:Common:footer.html.twig' %}
+        {% endblock %}
+
+        {% set jsSources %}
+            {% block javascript %}
+                {% javascripts
+                    '@AcmeCalculatorUIBundle/Resources/public/js/third-parties/*'
+                    '@AcmeCalculatorUIBundle/Resources/public/js/common/*'
+                    filter='?yui_js' %}
+                {% set jsSources = jsSources ~ "|" ~ asset_url %}
+                {% endjavascripts %}
+            {% endblock %}
+        {% endset %}
+        {% set jsSourcesArray = jsSources | split("|")%}
+        {% if jsSourcesArray | length == 1 %}
+            <script>
+                var cs = document.createElement('script'); cs.type = 'text/javascript'; cs.async = true;
+                cs.src = '{{jsSourcesArray[0]|trim}}';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(cs, s);
+            </script>
+        {% else %}
+            {% for jsSource in jsSourcesArray %}
+                <script src="{{jsSource|trim}}"></script>
+            {% endfor %}
+        {% endif %}
+    </body>
+</html>

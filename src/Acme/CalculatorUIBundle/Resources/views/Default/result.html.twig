@@ -1,16 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Calculator V1</title>
-</head>
-<body>
-<h1>Result</h1>
-    <span>
+{% extends 'AcmeCalculatorUIBundle:Layout:base.html.twig' %}
+{% from 'AcmeCalculatorUIBundle:Common:computeForm.html.twig' import computeForm %}
+
+{% block css %}
+    {% stylesheets
+    '@AcmeCalculatorUIBundle/Resources/public/css/third-parties/*'
+    '@AcmeCalculatorUIBundle/Resources/public/css/common/*'
+    '@AcmeCalculatorUIBundle/Resources/public/css/result/*'
+    filter='cssembed,?yui_css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block title %}Calculator Result page{% endblock %}
+
+{% block h1 %}<h1>Calculator Result page V3</h1>{% endblock %}
+
+{% block javascript %}
+    {% set jsSources = "" %}
+    {% javascripts
+        '@AcmeCalculatorUIBundle/Resources/public/js/third-parties/*'
+        '@AcmeCalculatorUIBundle/Resources/public/js/common/*'
+        '@AcmeCalculatorUIBundle/Resources/public/js/result/*'
+        filter='?yui_js' %}
+    {% set jsSources = (jsSources == "") ? asset_url : jsSources ~ "|" ~ asset_url%}
+    {% endjavascripts %}
+    {{jsSources}}
+{% endblock %}
+
+{% block main %}
+    <div class="well results">
+        <span>
         {{ operation.operandA.value }}
         {{ operation.operator.label }}
         {{ operation.operandB.value }}
         =
         {{ operation.result.value }}
-    </span>
-</body>
-</html>
+        </span>
+    </div>
+
+    {{ computeForm(operation.operandA.value, operation.operandB.value, operation.operator.id) }}
+{% endblock %}

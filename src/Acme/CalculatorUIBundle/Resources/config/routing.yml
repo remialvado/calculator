@@ -5,3 +5,19 @@ acme_calculator_ui_homepage:
 acme_calculator_ui_compute:
     path:     /compute
     defaults: { _controller: acme.calculator.ui.controller:compute }
+
+acme_calculator_ui_footer_contact_us:
+    path:     /content/contact-us.html
+    defaults: { _controller: acme.calculator.ui.footer.controller:contact }
+
+acme_calculator_ui_footer_legal:
+    path:     /content/legal.html
+    defaults: { _controller: acme.calculator.ui.footer.controller:legal }
+
+acme_calculator_ui_footer_confidentiality:
+    path:     /content/confidentiality.html
+    defaults: { _controller: acme.calculator.ui.footer.controller:confidentiality }
+
+acme_calculator_ui_footer_jobs:
+    path:     /content/jobs.html
+    defaults: { _controller: acme.calculator.ui.footer.controller:jobs }

@@ -18,4 +18,5 @@ parameters:
     debug_redirects:        false
     use_assetic_controller: true
 
-    acme.calculator.api.endpoint: ''
+    acme.calculator.api.endpoint: '@@acme.calculator.api.endpoint@@'
+    asset.version:                '@@asset.version@@'

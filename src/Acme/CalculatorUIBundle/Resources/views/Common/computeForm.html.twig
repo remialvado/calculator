@@ -1,0 +1,25 @@
+{% macro computeForm(operandA, operandB, operatorId) %}
+    <form action="{{ path('acme_calculator_ui_compute') }}" class="well">
+        <div class="form-group">
+            <label for="operand-a">Operand A</label>
+            <input name="operand-a" id="operand-a" class="form-control" value="{{ operandA | default('') }}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="operator">Operator</label>
+            <select name="operator" id="operator" class="form-control">
+                <option value="add" {% if operatorId == "add" %}selected{% endif %}>+</option>
+                <option value="substract" {% if operatorId == "substract" %}selected{% endif %}>-</option>
+                <option value="multiply" {% if operatorId == "multiply" %}selected{% endif %}>*</option>
+                <option value="divide" {% if operatorId == "divide" %}selected{% endif %}>/</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="operand-b">Operand B</label>
+            <input name="operand-b" id="operand-b" class="form-control" value="{{ operandB | default('') }}"/>
+        </div>
+
+        <button type="submit" class="btn btn-default">Compute</button>
+    </form>
+{% endmacro %}

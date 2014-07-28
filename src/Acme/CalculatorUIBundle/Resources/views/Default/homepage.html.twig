@@ -1,23 +1,53 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Calculator V2</title>
-</head>
-<body>
-<h1>Calculator V2</h1>
-<form action="compute">
-    <label for="operand-a">Operand A</label>
-    <input name="operand-a" id="operand-a" />
-    <label for="operator">Operator</label>
-    <select name="operator" id="operator">
-        <option value="add">+</option>
-        <option value="substract">-</option>
-        <option value="multiply">*</option>
-        <option value="divide">/</option>
-    </select>
-    <label for="operand-b">Operand B</label>
-    <input name="operand-b" id="operand-b" />
-    <button>Compute</button>
-</form>
-</body>
-</html>
+{% extends 'AcmeCalculatorUIBundle:Layout:base.html.twig' %}
+
+{% block css %}
+    {% stylesheets
+    '@AcmeCalculatorUIBundle/Resources/public/css/third-parties/*'
+    '@AcmeCalculatorUIBundle/Resources/public/css/common/*'
+    '@AcmeCalculatorUIBundle/Resources/public/css/home/*'
+    filter='cssembed,?yui_css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block title %}Calculator Homepage{% endblock %}
+
+{% block h1 %}<h1>Calculator Homepage V3</h1>{% endblock %}
+
+{% block javascript %}
+    {% set jsSources = "" %}
+    {% javascripts
+        '@AcmeCalculatorUIBundle/Resources/public/js/third-parties/*'
+        '@AcmeCalculatorUIBundle/Resources/public/js/common/*'
+        '@AcmeCalculatorUIBundle/Resources/public/js/home/*'
+        filter='?yui_js' %}
+        {% set jsSources = (jsSources == "") ? asset_url : jsSources ~ "|" ~ asset_url%}
+    {% endjavascripts %}
+    {{jsSources}}
+{% endblock %}
+
+{% block main %}
+    <form action="{{ path('acme_calculator_ui_compute') }}" class="well">
+        <div class="form-group">
+            <label for="operand-a">Operand A</label>
+            <input name="operand-a" id="operand-a" class="form-control"/>
+        </div>
+
+        <div class="form-group">
+            <label for="operator">Operator</label>
+            <select name="operator" id="operator" class="form-control">
+                <option value="add">+</option>
+                <option value="substract">-</option>
+                <option value="multiply">*</option>
+                <option value="divide">/</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="operand-b">Operand B</label>
+            <input name="operand-b" id="operand-b" class="form-control"/>
+        </div>
+
+        <button type="submit" class="btn btn-default">Compute</button>
+    </form>
+{% endblock %}

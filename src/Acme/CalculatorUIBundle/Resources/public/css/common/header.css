@@ -1,0 +1,14 @@
+header {
+    width: 100%;
+    background-color: #dd4814;
+    border-color: #bf3e11;
+    color: white;
+    padding: 10px;
+}
+
+header a {
+    background: url('/bundles/acmecalculatorui/images/logo/symfony.png') no-repeat 0 0px;
+    width: 200px;
+    height: 40px;
+    display: inline-block;
+}

@@ -1,0 +1,18 @@
+footer {
+    margin-top: 30px;
+    border-top: 2px solid #bf3e11;
+}
+
+footer ul {
+    padding-left: 0;
+    padding-top: 10px;
+}
+
+footer li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+footer li.jobs {
+    color: #bf3e11;
+}
