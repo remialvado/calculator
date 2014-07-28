@@ -93,7 +93,7 @@ Implement a very simple calculator using some of the key framework features like
 
 # Step 12
 
-* Use Logger dn channels
+* Use Logger and channels
 
 # Step 13
 
