@@ -3,7 +3,6 @@
 namespace Acme\CalculatorUIBundle\Controller;
 
 use Acme\CalculatorModelBundle\Model\Operation;
-use Acme\CalculatorUIBundle\Type\OperationType;
 use Symfony\Component\HttpFoundation\Request;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;

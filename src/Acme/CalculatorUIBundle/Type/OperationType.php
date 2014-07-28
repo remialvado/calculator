@@ -2,8 +2,6 @@
 
 namespace Acme\CalculatorUIBundle\Type;
 
-use Acme\CalculatorModelBundle\Model\Operator\Add;
-use Acme\CalculatorModelBundle\Model\Operator\Substract;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\ChoiceList\ObjectChoiceList;
 use Symfony\Component\Form\FormBuilderInterface;

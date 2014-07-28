@@ -3,7 +3,6 @@
 namespace Acme\CalculatorAPIBundle\Controller;
 
 use Acme\CalculatorModelBundle\Model\Operand;
-use Acme\CalculatorModelBundle\Model\Operation;
 use Acme\CalculatorModelBundle\Model\Operator;
 use Symfony\Component\HttpFoundation\Request;
 use JMS\DiExtraBundle\Annotation as DI;
