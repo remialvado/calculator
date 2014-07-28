@@ -2,6 +2,8 @@
 
 namespace Acme\CalculatorUIBundle\Controller;
 
+use Acme\CalculatorModelBundle\Model\Operation;
+use Acme\CalculatorUIBundle\Type\OperationType;
 use Symfony\Component\HttpFoundation\Request;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -16,7 +18,9 @@ class DefaultController extends AbstractController
      */
     public function homepage(Request $request)
     {
-        return [];
+        $operation = new Operation();
+        $form = $this->formFactory->create("operation", $operation);
+        return ["form" => $form->createView()];
     }
 
     /**
@@ -24,14 +28,15 @@ class DefaultController extends AbstractController
      */
     public function compute(Request $request)
     {
+        $operation = new Operation();
+        $form = $this->formFactory->create("operation", $operation);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $result = $this->calculatorServiceClient->compute($operation->getOperandA(), $operation->getOperandB(), $operation->getOperator());
+            $operation->setResult($result);
+        }
 
-        $operandA = $request->get("operand-a");
-        $operandB = $request->get("operand-b");
-        $operator = $request->get("operator");
-
-        $operation = $this->calculatorServiceClient->compute($operandA, $operandB, $operator);
-
-        return ["operation" => $operation];
+        return ["operation" => $operation, "form" => $form->createView()];
     }
 
     /**
@@ -41,13 +46,13 @@ class DefaultController extends AbstractController
     public $calculatorServiceClient;
 
     /**
-     * @var \Acme\CalculatorModelBundle\Service\OperatorFactory
-     * @DI\Inject("acme.calculator.operator.factory")
-     */
-    public $operatorFactory;
-
-    /**
      * @DI\Inject("templating")
      */
     public $templating;
+
+    /**
+     * @DI\Inject("form.factory")
+     * @var \Symfony\Component\Form\FormFactory
+     */
+    public $formFactory;
 }

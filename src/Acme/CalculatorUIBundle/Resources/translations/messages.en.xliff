@@ -50,6 +50,10 @@
                 <source>seo.h1.result</source>
                 <target>Calculator ResultPage V3</target>
             </trans-unit>
+            <trans-unit id="13">
+                <source>operation.impossible</source>
+                <target>Unable to performe this operation</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

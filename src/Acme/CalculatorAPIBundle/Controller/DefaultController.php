@@ -21,8 +21,7 @@ class DefaultController extends AbstractController
         $operator = $this->operatorFactory->getOperator($request->get("operator"));
 
         $result = $this->calculator->compute($operandA, $operandB, $operator);
-        $operation = new Operation($operandA, $operandB, $operator, $result);
-        return new Response($this->serializer->serialize($operation, $_format));
+        return new Response($this->serializer->serialize($result, $_format));
     }
 
     /**

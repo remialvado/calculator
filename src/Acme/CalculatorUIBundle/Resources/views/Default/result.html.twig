@@ -1,5 +1,5 @@
 {% extends 'AcmeCalculatorUIBundle:Layout:base.html.twig' %}
-{% from 'AcmeCalculatorUIBundle:Common:computeForm.html.twig' import computeForm %}
+{% from 'AcmeCalculatorUIBundle:Common:computeForm.html.twig' import displayComputeForm %}
 
 {% block css %}
     {% stylesheets
@@ -28,15 +28,21 @@
 {% endblock %}
 
 {% block main %}
-    <div class="well results">
-        <span>
-        {{ operation.operandA.value }}
-        {{ operation.operator.label }}
-        {{ operation.operandB.value }}
-        =
-        {{ operation.result.value }}
-        </span>
+    <div class="results">
+        {% if operation.result is not null %}
+            <div class="alert alert-success" role="alert">
+                {{ operation.operandA.value }}
+                {{ operation.operator.label }}
+                {{ operation.operandB.value }}
+                =
+                {{ operation.result.value | default("") }}
+            </div>
+        {% else %}
+            <div class="alert alert-danger" role="alert">
+                {% trans %}operation.impossible{% endtrans %}
+            </div>
+        {% endif %}
     </div>
 
-    {{ computeForm(operation.operandA.value, operation.operandB.value, operation.operator.id) }}
+    {{ displayComputeForm(form) }}
 {% endblock %}

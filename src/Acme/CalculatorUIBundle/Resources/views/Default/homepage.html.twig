@@ -1,5 +1,5 @@
 {% extends 'AcmeCalculatorUIBundle:Layout:base.html.twig' %}
-{% from 'AcmeCalculatorUIBundle:Common:computeForm.html.twig' import computeForm %}
+{% from 'AcmeCalculatorUIBundle:Common:computeForm.html.twig' import displayComputeForm %}
 
 {% block css %}
     {% stylesheets
@@ -28,5 +28,5 @@
 {% endblock %}
 
 {% block main %}
-    {{ computeForm() }}
+    {{ displayComputeForm(form) }}
 {% endblock %}

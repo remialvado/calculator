@@ -50,6 +50,10 @@
                 <source>seo.h1.result</source>
                 <target>Calculette - Page de résultat - Version 3</target>
             </trans-unit>
+            <trans-unit id="13">
+                <source>operation.impossible</source>
+                <target>Opération non réalisée</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

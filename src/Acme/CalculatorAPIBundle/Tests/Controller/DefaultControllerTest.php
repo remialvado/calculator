@@ -19,10 +19,6 @@ class DefaultControllerTest extends BaseTestCase
         $result = json_decode($response->getContent(), true);
 
         $this->assertTrue(is_array($result));
-        $this->assertThat($result["operand_a"]["value"], $this->equalTo("4"));
-        $this->assertThat($result["operand_b"]["value"], $this->equalTo("7"));
-        $this->assertThat($result["operator"]["id"], $this->equalTo("add"));
-        $this->assertThat($result["operator"]["label"], $this->equalTo("+"));
-        $this->assertThat($result["result"]["value"], $this->equalTo("11"));
+        $this->assertThat($result["value"], $this->equalTo("11"));
     }
 }

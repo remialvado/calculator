@@ -79,3 +79,21 @@ Implement a very simple calculator using some of the key framework features like
 * Configure all routes to be localized
 * Use "requirement" keyword in routing
 * Use simple and complex translations
+
+# Step 10
+
+* Use forms and validators
+
+# Step 11
+
+* Add HTTP cache on API calls
+* Add business cache inside API
+
+# Step 12
+
+* Store operations into Doctrine
+
+# Step 13
+
+* Store operations into Riak
+* Use Riak as a cache layer
