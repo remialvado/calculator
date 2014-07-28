@@ -8,6 +8,7 @@ use JMS\DiExtraBundle\Annotation as DI;
 
 /**
  * @DI\Service("acme.calculator.api.history")
+ * @DI\Tag("monolog.logger", attributes = {"channel" = "history"})
  */
 class HistoryManager
 {
@@ -20,8 +21,10 @@ class HistoryManager
      */
     public function getHistory()
     {
+        $this->logger->debug("Get history");
         $content = $this->cache->fetch(self::CACHE_KEY);
         if (!$content) {
+            $this->logger->warning("History does not exist");
             return new History();
         }
         return $this->serializer->deserialize($content, "Acme\CalculatorAPIBundle\Model\History", self::FORMAT);
@@ -33,6 +36,7 @@ class HistoryManager
      */
     public function saveHistory($history)
     {
+        $this->logger->debug("save history with " . $history->count() . " item(s)");
         $content = $this->serializer->serialize($history, self::FORMAT);
         return $this->cache->save(self::CACHE_KEY, $content, self::LIFETIME);
     }
@@ -46,6 +50,7 @@ class HistoryManager
      */
     public function add($type, $operation, $date, $userAgent)
     {
+        $this->logger->debug("add an historyItem into history for $type");
         $history = $this->getHistory();
         $history->add(new HistoryItem($date, $type, $operation, $userAgent));
         return $this->saveHistory($history);
@@ -67,4 +72,21 @@ class HistoryManager
      * @DI\Inject("serializer")
      */
     public $serializer;
+
+    /**
+     * @var \Psr\Log\LoggerInterface
+     * Logger has to be injected using constructor injection to allow monolog to tag it with the proper channel
+     */
+    public $logger;
+
+    /**
+     * @param \Psr\Log\LoggerInterface $logger
+     * @DI\InjectParams({
+     *     "logger" = @DI\Inject("logger")
+     * })
+     */
+    function __construct($logger)
+    {
+        $this->logger = $logger;
+    }
 } 

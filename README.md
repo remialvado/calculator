@@ -93,4 +93,12 @@ Implement a very simple calculator using some of the key framework features like
 
 # Step 12
 
+* Use Logger dn channels
+
+# Step 13
+
 * Use Riak to store special operand
+
+# Step 14
+
+* Use Riak as a cache layer

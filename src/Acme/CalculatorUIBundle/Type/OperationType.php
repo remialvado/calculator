@@ -11,16 +11,18 @@ use JMS\DiExtraBundle\Annotation as DI;
 /**
  * @DI\Service("acme.calculator.form.type.operation")
  * @DI\Tag("form.type", attributes = {"alias" = "operation"})
+ * @DI\Tag("monolog.logger", attributes = {"channel" = "formtype"})
  */
 class OperationType extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $this->logger->debug("prepare Operation FormType");
         $operators = new ObjectChoiceList($this->operatorFactory->getSupportedOperators(), "label", [], null, "id");
-        $builder->add('operandA', new OperandType())
+        $builder->add('operandA', "operand")
                 ->add('operator', 'choice', ["choice_list" => $operators])
-                ->add('operandB', new OperandType())
+                ->add('operandB', "operand")
                 ->setAction('compute')
                 ->setMethod('GET')
                 ->add('compute', 'submit');
@@ -49,5 +51,22 @@ class OperationType extends AbstractType
      * @DI\Inject("acme.calculator.operator.factory")
      */
     public $operatorFactory;
+
+    /**
+     * @var \Psr\Log\LoggerInterface
+     * Logger has to be injected using constructor injection to allow monolog to tag it with the proper channel
+     */
+    public $logger;
+
+    /**
+     * @param \Psr\Log\LoggerInterface $logger
+     * @DI\InjectParams({
+     *     "logger" = @DI\Inject("logger")
+     * })
+     */
+    function __construct($logger = null)
+    {
+        $this->logger = $logger;
+    }
 
 } 
