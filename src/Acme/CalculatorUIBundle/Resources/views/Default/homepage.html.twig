@@ -1,4 +1,5 @@
 {% extends 'AcmeCalculatorUIBundle:Layout:base.html.twig' %}
+{% from 'AcmeCalculatorUIBundle:Common:computeForm.html.twig' import computeForm %}
 
 {% block css %}
     {% stylesheets
@@ -10,9 +11,9 @@
     {% endstylesheets %}
 {% endblock %}
 
-{% block title %}Calculator Homepage{% endblock %}
+{% block title %}{% trans %}seo.title.homepage{% endtrans %}{% endblock %}
 
-{% block h1 %}<h1>Calculator Homepage V3</h1>{% endblock %}
+{% block h1 %}<h1>{% trans %}seo.h1.homepage{% endtrans %}</h1>{% endblock %}
 
 {% block javascript %}
     {% set jsSources = "" %}
@@ -27,27 +28,5 @@
 {% endblock %}
 
 {% block main %}
-    <form action="{{ path('acme_calculator_ui_compute') }}" class="well">
-        <div class="form-group">
-            <label for="operand-a">Operand A</label>
-            <input name="operand-a" id="operand-a" class="form-control"/>
-        </div>
-
-        <div class="form-group">
-            <label for="operator">Operator</label>
-            <select name="operator" id="operator" class="form-control">
-                <option value="add">+</option>
-                <option value="substract">-</option>
-                <option value="multiply">*</option>
-                <option value="divide">/</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="operand-b">Operand B</label>
-            <input name="operand-b" id="operand-b" class="form-control"/>
-        </div>
-
-        <button type="submit" class="btn btn-default">Compute</button>
-    </form>
+    {{ computeForm() }}
 {% endblock %}

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>operand</source>
+                <target>Operand %id%</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>compute</source>
+                <target>Compute</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>operator</source>
+                <target>Operator</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>seo.title.homepage</source>
+                <target>Calculator Homepage</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>seo.h1.homepage</source>
+                <target>Calculator Homepage V3</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>footer.contact</source>
+                <target>Contact Us</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>footer.legal</source>
+                <target>Legal</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>footer.confidentiality</source>
+                <target>Confidentiality</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>footer.jobs</source>
+                <target>Jobs</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>header.title</source>
+                <target>My Super Calculator</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>seo.title.result</source>
+                <target>Calculator ResultPage</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>seo.h1.result</source>
+                <target>Calculator ResultPage V3</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

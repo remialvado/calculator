@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>operand</source>
+                <target>Opérande %id%</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>compute</source>
+                <target>Calculer</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>operator</source>
+                <target>Opérateur</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>seo.title.homepage</source>
+                <target>Calculette - Page d'accueil</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>seo.h1.homepage</source>
+                <target>Calculette - Page d'accueil - Version 3</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>footer.contact</source>
+                <target>Contactez nous</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>footer.legal</source>
+                <target>Conditions légales</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>footer.confidentiality</source>
+                <target>Politique de confidentialité</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>footer.jobs</source>
+                <target>Carrière</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>header.title</source>
+                <target>Ma super calculette</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>seo.title.result</source>
+                <target>Calculette - Page de résultat</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>seo.h1.result</source>
+                <target>Calculette - Page de résultat - Version 3</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
