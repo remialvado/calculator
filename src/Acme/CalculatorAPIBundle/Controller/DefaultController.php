@@ -13,6 +13,11 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class DefaultController extends AbstractController
 {
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
+
     public function compute(Request $request, $_format = "json")
     {
         $operandA = new Operand($request->get("operandA"));
@@ -20,12 +25,34 @@ class DefaultController extends AbstractController
         $operator = $this->operatorFactory->getOperator($request->get("operator"));
 
         $result = $this->calculator->compute($operandA, $operandB, $operator);
-        return new Response($this->serializer->serialize($result, $_format));
+        $response = new Response($this->serializer->serialize($result, $_format));
+        $date = $this->date;
+        $date->modify('+10 seconds');
+        $response->setExpires($date);
+        $response->setCache(["public" => "true"]);
+        return $response;
+    }
+
+    public function history(Request $request, $_format = "json")
+    {
+        return new Response($this->serializer->serialize($this->historyManager->getHistory(), $_format));
+    }
+
+    public function historyPurge(Request $request, $_format = "json")
+    {
+        $this->historyManager->purge();
+        return new Response(null, 204);
     }
 
     /**
-     * @var \Acme\CalculatorAPIBundle\Service\Calculator
-     * @DI\Inject("acme.calculator.calculator.simple")
+     * @var \Acme\CalculatorAPIBundle\Service\HistoryManager
+     * @DI\Inject("acme.calculator.api.history")
+     */
+    public $historyManager;
+
+    /**
+     * @var \Acme\CalculatorAPIBundle\Service\CacheCalculator
+     * @DI\Inject("acme.calculator.calculator.cache")
      */
     public $calculator;
 
@@ -40,4 +67,9 @@ class DefaultController extends AbstractController
      * @DI\Inject("serializer")
      */
     public $serializer;
+
+    /**
+     * @var \DateTime
+     */
+    public $date;
 }

@@ -1,4 +1,16 @@
-acme_calculator_api.compute:
+acme_calculator_api_compute:
     path:     /{operandA}/{operandB}/{operator}.{_format}
     defaults:
       _controller: acme.calculator.api.controller:compute
+
+acme_calculator_api_history:
+    path:     /history.{_format}
+    defaults:
+      _controller: acme.calculator.api.controller:history
+
+acme_calculator_api_history_purge:
+    path:     /history
+    defaults:
+      _controller: acme.calculator.api.controller:historyPurge
+    requirements:
+      _method: DELETE

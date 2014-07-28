@@ -82,18 +82,15 @@ Implement a very simple calculator using some of the key framework features like
 
 # Step 10
 
-* Use forms and validators
+* Use forms to handle request
+* Operand should be valid doubles
 
 # Step 11
 
 * Add HTTP cache on API calls
 * Add business cache inside API
+* PHPUnit : use setup method and depends annotation
 
 # Step 12
 
-* Store operations into Doctrine
-
-# Step 13
-
-* Store operations into Riak
-* Use Riak as a cache layer
+* Use Riak to store special operand

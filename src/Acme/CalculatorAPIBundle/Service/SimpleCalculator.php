@@ -7,7 +7,7 @@ use JMS\DiExtraBundle\Annotation as DI;
 /**
  * @DI\Service("acme.calculator.calculator.simple")
  */
-class Calculator
+class SimpleCalculator
 {
     /**
      * @param \Acme\CalculatorModelBundle\Model\Operand $operandA

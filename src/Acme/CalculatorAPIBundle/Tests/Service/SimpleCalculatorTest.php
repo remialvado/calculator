@@ -9,10 +9,10 @@ use Acme\CalculatorModelBundle\Model\Operator\Multiply;
 use Acme\CalculatorModelBundle\Model\Operator\Operator;
 use Acme\CalculatorModelBundle\Model\Operator\Substract;
 use Acme\CalculatorModelBundle\Model\Result;
-use Acme\CalculatorAPIBundle\Service\Calculator;
+use Acme\CalculatorAPIBundle\Service\SimpleCalculator;
 use Acme\CalculatorAPIBundle\Tests\BaseTestCase;
 
-class CalculatorTest extends BaseTestCase
+class SimpleCalculatorTest extends BaseTestCase
 {
 
     /**
@@ -21,7 +21,7 @@ class CalculatorTest extends BaseTestCase
      */
     public function computeWithoutMocks($operandA, $operandB, $operator, $result)
     {
-        $calculator = new Calculator();
+        $calculator = new SimpleCalculator();
         $this->assertThat($calculator->compute($operandA, $operandB, $operator), $this->equalTo($result));
     }
 
@@ -30,7 +30,7 @@ class CalculatorTest extends BaseTestCase
      */
     public function computeWithMock()
     {
-        $calculator = new Calculator();
+        $calculator = new SimpleCalculator();
         $mockOperator = $this->getMock("Acme\CalculatorAPIBundle\Tests\Model\BaseOperator");
         $mockOperator->expects($this->once())
                      ->method("compute")
@@ -43,7 +43,7 @@ class CalculatorTest extends BaseTestCase
      */
     public function computeWithMockBuilder()
     {
-        $calculator = new Calculator();
+        $calculator = new SimpleCalculator();
         $mockOperator = $this->getMockBuilder("Acme\CalculatorAPIBundle\Tests\Model\BaseOperator")
                              ->setMethods(["compute"])
                              ->disableOriginalConstructor()
