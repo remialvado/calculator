@@ -9,6 +9,8 @@ Implement a very simple calculator using some of the key framework features like
 * Communication with Riak using RiakBundle
 * ...
 
+Salut
+
 ## Step 0
 
 * Create a component called *calculator*
