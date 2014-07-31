@@ -9,7 +9,8 @@ Implement a very simple calculator using some of the key framework features like
 * Communication with Riak using RiakBundle
 * ...
 
-Salut
+
+![alt text](https://raw.githubusercontent.com/remialvado/calculator/master/app/Resources/images/calculette-step12.png "Calculette step12")
 
 ## Step 0
 
